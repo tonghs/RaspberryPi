@@ -1,0 +1,7 @@
+ipython
+requests
+gpiozero
+RPIO
+pigpio
+rpi_ws281x
+flake8
