@@ -70,12 +70,16 @@ def render_char(base_matrix, char_list):
         replace_matrix(base_matrix, x, y, bmp_data_matrix)
 
 
-def show(strip, matrix):
+def show(strip, matrix, color=None):
     width = len(matrix[0])
     height = len(matrix)
     for row in range(height):
         for col in range(width):
             color_r, color_g, color_b = matrix[row][col]
-            strip.setPixelColor(xy_to_array_index(col, row), Color(color_r, color_g, color_b))
+            _color = Color(color_r, color_g, color_b)
+            if (color_r or color_g or color_b) and color:
+                _color = color
+
+            strip.setPixelColor(xy_to_array_index(col, row), _color)
 
     strip.show()
