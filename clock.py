@@ -66,6 +66,7 @@ def main():
     while True:
         # show_time(Color(205, 102, 29))
         show_time()
+        sleep(1)
 
 
 if __name__ == '__main__':
