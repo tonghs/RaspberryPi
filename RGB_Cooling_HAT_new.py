@@ -17,6 +17,7 @@ rgb_off_reg = 0x07
 rgb_effect_reg = 0x04
 fan_reg = 0x08
 fan_state = 2
+fan_speed = 0x00
 count = 0
 
 # take off rgb
@@ -144,24 +145,21 @@ while True:
     setOLEDshow()
 
     if g_temp <= 36:
-        if fan_state != 0:
-            setFanSpeed(0x00)
-            fan_state = 0
+        _fan_speed = 0x00
     elif g_temp >= 38 and g_temp <= 40:
-        setFanSpeed(0x02)
-        fan_state = 1
+        _fan_speed = 0x02
     elif g_temp >= 40 and g_temp <= 42:
-        setFanSpeed(0x03)
-        fan_state = 1
+        _fan_speed = 0x04
     elif g_temp >= 42 and g_temp <= 44:
-        setFanSpeed(0x06)
-        fan_state = 1
+        _fan_speed = 0x06
     elif g_temp > 44 and g_temp <= 46:
-        setFanSpeed(0x09)
-        fan_state = 1
+        _fan_speed = 0x09
     elif g_temp > 46:
-        setFanSpeed(0x01)
-        fan_state = 1
+        _fan_speed = 0x01
+
+    if fan_speed != _fan_speed:
+        fan_speed = _fan_speed
+        setFanSpeed(_fan_speed)
 
     # if count == 10:
     #     setRGBEffect(0x04)
@@ -172,5 +170,5 @@ while True:
     # elif count == 40:
     #     setRGBEffect(0x03)
     #     count = 0
-    count += 1
-    time.sleep(.5)
+    # count += 1
+    time.sleep(1)
