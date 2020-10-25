@@ -147,26 +147,21 @@ while True:
         if fan_state != 0:
             setFanSpeed(0x00)
             fan_state = 0
+    elif g_temp >= 38 and g_temp <= 40:
+        setFanSpeed(0x02)
+        fan_state = 1
     elif g_temp >= 40 and g_temp <= 42:
-        if fan_state != 1:
-            setFanSpeed(0x04)
-            fan_state = 1
-    elif g_temp > 42 and g_temp <= 44:
-        if fan_state != 1:
-            setFanSpeed(0x06)
-            fan_state = 1
+        setFanSpeed(0x03)
+        fan_state = 1
+    elif g_temp >= 42 and g_temp <= 44:
+        setFanSpeed(0x06)
+        fan_state = 1
     elif g_temp > 44 and g_temp <= 46:
-        if fan_state != 1:
-            setFanSpeed(0x08)
-            fan_state = 1
-    elif g_temp > 46 and g_temp <= 48:
-        if fan_state != 1:
-            setFanSpeed(0x09)
-            fan_state = 1
-    elif g_temp > 48:
-        if fan_state != 1:
-            setFanSpeed(0x01)
-            fan_state = 1
+        setFanSpeed(0x09)
+        fan_state = 1
+    elif g_temp > 46:
+        setFanSpeed(0x01)
+        fan_state = 1
 
     # if count == 10:
     #     setRGBEffect(0x04)
