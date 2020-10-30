@@ -144,15 +144,15 @@ setFanSpeed(0x00)
 while True:
     setOLEDshow()
 
-    if g_temp <= 36:
+    if g_temp <= 34:
         _fan_speed = 0x00
-    elif g_temp >= 38 and g_temp <= 40:
+    elif g_temp >= 36 and g_temp <= 38:
         _fan_speed = 0x02
-    elif g_temp >= 40 and g_temp <= 42:
+    elif g_temp >= 38 and g_temp <= 40:
         _fan_speed = 0x04
-    elif g_temp >= 42 and g_temp <= 44:
+    elif g_temp >= 40 and g_temp <= 42:
         _fan_speed = 0x06
-    elif g_temp > 44 and g_temp <= 46:
+    elif g_temp > 42 and g_temp <= 46:
         _fan_speed = 0x09
     elif g_temp > 46:
         _fan_speed = 0x01
